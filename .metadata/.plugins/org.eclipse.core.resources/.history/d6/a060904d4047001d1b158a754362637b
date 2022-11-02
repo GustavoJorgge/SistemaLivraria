@@ -1,0 +1,53 @@
+package Livraria;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Livraria {
+
+	public static void main(String[] args) {	
+	
+		String nome,autor,tema;
+		int aux;
+		Scanner ler = new Scanner(System.in);
+		Scanner lerString = new Scanner(System.in);
+		
+		do {		
+			exibirMenu();
+			
+			switch(aux) {
+			case 1:
+				System.out.printf("Entre com o nome do livro:");
+				nome = lerString.nextLine();
+				System.out.printf("Entre com o autor:");
+				autor = lerString.nextLine();
+				System.out.printf("Entre com o tema do livro:");
+				tema = lerString.nextLine();
+				
+				objLivro = new Livro(nome, autor,tema);
+				
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}			
+			default:
+				System.out.printf("Opcao invalida!!");
+			
+		}while( aux != 4);
+
+	}
+	
+	static void exibirMenu() {
+		System.out.printf("-------MENU-------");
+		System.out.printf("1 - CADASTRAR\n");
+		System.out.printf("2 - CONSULTAR\n");
+		System.out.printf("3 - LISTAR\n");		
+		System.out.printf("4 - SAIR\n");
+		System.out.printf("DIGITE SUA ESCOLHA:");
+	}
+}
+

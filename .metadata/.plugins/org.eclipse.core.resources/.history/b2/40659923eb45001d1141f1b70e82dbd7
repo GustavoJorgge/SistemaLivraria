@@ -1,0 +1,59 @@
+package Livraria;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Livraria {
+
+	public static void main(String[] args) {	
+	
+		String nome,autor;
+		int qtd,aux;
+		Scanner ler = new Scanner(System.in);
+		Scanner lerString = new Scanner(System.in);
+		
+		do {		
+			exibirMenu();
+			
+		}while( aux != 4);
+
+	}
+
+
+
+	static void exibirMenu() {
+		System.out.printf("-------MENU-------");
+		System.out.printf("1 - CADASTRAR\n");
+		System.out.printf("2 - CONSULTAR\n");
+		System.out.printf("3 - LISTAR\n");		
+		System.out.printf("4 - SAIR\n");
+		System.out.printf("DIGITE SUA ESCOLHA:");
+	}
+}
+
+class Livro {	
+	private String nom_Livro;
+	private int cod_Livro;
+	private String nom_autor;
+	
+	//construtor
+	public Livro(String nom_Livro, int cod_Livro, String nom_autor) {
+		super();
+		this.nom_Livro = nom_Livro;
+		this.cod_Livro = cod_Livro;
+		this.nom_autor = nom_autor;
+	}
+	
+	//inserir getter pois esta private
+	public String getNom_Livro() {
+		return nom_Livro;
+	}	
+
+	public int getCod_Livro() {
+		return cod_Livro;
+	}
+
+	public String getNom_autor() {
+		return nom_autor;
+	}		
+}
