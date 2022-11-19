@@ -1,23 +1,23 @@
 public class Livros {		
-	String nome;	
-	String autor;
-	String tema;	
+	private String nome;	
+	private String autor;
+	private String genero;
+	private int cod;
 	
-	Livros(){
-		
+	
+	void setCod(int cod) {
+		this.cod = cod;
 	}
 	
-	Livros(String nome, String autor, String tema){
-		this.nome = nome;
-		this.autor = autor;
-		this.tema = tema;
-	}	
+	public int getCod() {
+		return cod;
+	}
 
 	void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	String getNome() {
+	public String getNome() {
 		return nome;
 	}
 	
@@ -25,16 +25,17 @@ public class Livros {
 		this.autor = autor;
 	}
 	
-	String getAutor() {
+	public String getAutor() {
 		return autor;
 	}
 	
-	void setTema(String tema) {
-		this.tema = tema;
+	void setGenero(String genero) {
+		this.genero = genero;
 	}
 	
-	String getTema() {
-		return tema;
-	}		
+	public String getGenero() {
+		return genero;
+	}	
 	
+	// metoro para retornar a lista de livros
 }

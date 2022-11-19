@@ -1,0 +1,48 @@
+public class Livros {		
+	private static String nome;	
+	private static String autor;
+	private static String genero;	
+	
+	Livros(){		
+	}//criando objeto
+	
+	Livros(String nome, String autor, String tema){
+		this.nome = nome;
+		this.autor = autor;
+		this.genero = genero;
+	}	
+
+	void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	static String getNome() {
+		return nome;
+	}
+	
+	void setAutor(String autor) {
+		this.autor = autor;
+	}
+	
+	static String getAutor() {
+		return autor;
+	}
+	
+	void setGenero(String genero) {
+		this.genero = genero;
+	}
+	
+	static String getGenero() {
+		return genero;
+	}	
+	
+	public String getLivros() {
+		
+		return "Nome: "+this.nome+
+				"\nAutor: "+ this.autor+
+				"\nGenero: "+ this.genero;
+	}
+	
+	
+	
+}

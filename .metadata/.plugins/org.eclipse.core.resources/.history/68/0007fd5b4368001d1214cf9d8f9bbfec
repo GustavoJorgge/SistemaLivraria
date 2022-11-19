@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Livraria_main {
+
+	public static void main(String[] args) {		
+		Scanner ler = new Scanner (System.in);
+		
+		int aux=0;
+		int ind=0;
+		String nome, autor, genero;
+		int cod=0;
+				
+		Livros livro[]= new Livros[4]; // Criando a lista de Objetos
+				
+		for( int i = 0 ; aux != 4 ; i++ ) {
+			aux = exibirMenu(aux);
+			switch(aux) {
+				case 1:						
+					System.out.printf("Entre com o nome do livro:");
+					nome = ler.nextLine();				
+					System.out.printf("Entre com o autor:");
+					autor = ler.nextLine();					
+					System.out.printf("Entre com o genero do livro:");
+					genero = ler.nextLine();					
+					livro[ind] = new Livros(nome,autor,genero,cod);
+					cod++;
+					break;
+				case 2:
+					break;
+				case 3:		
+					System.out.printf("--------LISTA--------\n");					
+					for( i = 0 ; i < livro.length; i++) {
+					System.out.printf("Cod Livro: %d\n", livro[i].getCod());
+					System.out.printf("Nome: %s\n", livro[i].getNome());
+					System.out.printf("Autor %s\n", livro[i].getAutor());
+					System.out.printf("Genero %s\n", livro[i].getGenero());
+					}
+					break;
+				case 4:
+					break;
+							
+				default:
+			}//switch
+		}//for
+	}//main
+	
+	//metodo para exibir o menu
+	static int exibirMenu(int aux) {
+			
+			int escolha;
+			Scanner ler = new Scanner(System.in);
+			
+			System.out.printf("-------MENU-------\n");
+			System.out.printf("1 - CADASTRAR\n");
+			System.out.printf("2 - CONSULTAR\n");
+			System.out.printf("3 - LISTAR\n");		
+			System.out.printf("4 - SAIR\n");
+			System.out.printf("DIGITE SUA ESCOLHA:");
+			
+			escolha = ler.nextInt();
+			
+			return escolha;
+	}//metodo para exibir o Menu
+			
+}//class
