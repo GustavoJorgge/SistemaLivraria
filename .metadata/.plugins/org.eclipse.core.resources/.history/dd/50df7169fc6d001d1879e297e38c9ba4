@@ -6,9 +6,10 @@ public class Livraria_main {
 	public static void main(String[] args) {		
 		Scanner ler = new Scanner (System.in);
 		
-		int aux=-1, deletar;		
+		int aux=-1, deletar;
+		String ConsultaAutor;
 		String nome, autor, genero;
-		int cod=0;
+		int cod=0001;
 				
 		ArrayList<Livros> livros = new ArrayList(); // Criando a lista de Objetos
 		
@@ -40,16 +41,7 @@ public class Livraria_main {
 					System.out.printf("--------DELETAR--------\n");
 					System.out.printf("Digite o Cod do livro que deseja deletar:");
 					deletar = ler.nextInt();
-					
-					for(int j = 0; j < livros.size() ; j++) {
-						Livros livro1 = livros.get(j);
-						if(livro1.getCod()== deletar) {
-							livros.remove(deletar);	
-							System.out.printf("Livro Deletado!\n");
-						}else {
-							System.out.printf("Não Possui Livro com o codigo\n");
-						}
-						}				
+					DeletarLivro(deletar);
 					break;							
 				default:
 			}//switch
@@ -102,4 +94,17 @@ public class Livraria_main {
 		}
 	}	
 	
+	static String DeletarLivro(int del) {
+		ArrayList<Livros> livros = new ArrayList();		
+		for(int i = 0; i < livros.size() ; i++) {
+		Livros livro = livros.get(i);
+		if(livro.getCod()== del) {
+			livros.remove(del);
+			return "Deletado";
+		}else {
+			return "Não Possui Livro com o codigo ";
+		}
+		}
+		return null;	
+	}
 }//class

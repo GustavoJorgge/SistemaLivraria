@@ -6,12 +6,13 @@ public class Livraria_main {
 	public static void main(String[] args) {		
 		Scanner ler = new Scanner (System.in);
 		
-		int aux=-1, deletar;		
+		int aux=-1, deletar;
+		String ConsultaAutor;
 		String nome, autor, genero;
-		int cod=0;
+		int cod=0001;
 				
 		ArrayList<Livros> livros = new ArrayList(); // Criando a lista de Objetos
-		
+				
 		for( int i = 0 ; aux != 5 ; i++ ) {
 			aux = exibirMenu(aux);
 			switch(aux) {			
@@ -31,30 +32,30 @@ public class Livraria_main {
 					cod++;
 					break;
 				case 2: 					
-					ConsultarLivro(livros); // Passando ArrayList como parametro para o metodo Consultar
+					ConsultarLivro();
 					break;
 				case 3:	// IMPRIMIR LISTA
-					ListarLivros(livros);
+					System.out.printf("--------LISTA--------\n");					
+					for( int j = 0 ; j < livros.size(); j++) {						
+						Livros temp = livros.get(j);
+						livros.size();
+						System.out.printf("Cod Livro: %d \n", temp.getCod());
+						System.out.printf("Nome: %s \n",temp.getNome());
+						System.out.printf("Autor: %s \n",temp.getAutor());
+						System.out.printf("Genero: %s \n",temp.getGenero());
+					}
 					break;
 				case 4:
 					System.out.printf("--------DELETAR--------\n");
 					System.out.printf("Digite o Cod do livro que deseja deletar:");
 					deletar = ler.nextInt();
-					
-					for(int j = 0; j < livros.size() ; j++) {
-						Livros livro1 = livros.get(j);
-						if(livro1.getCod()== deletar) {
-							livros.remove(deletar);	
-							System.out.printf("Livro Deletado!\n");
-						}else {
-							System.out.printf("Não Possui Livro com o codigo\n");
-						}
-						}				
+					DeletarLivro(deletar);
 					break;							
 				default:
 			}//switch
 		}//for
 	}//main	
+	//metodo para exibir o menu
 	static int exibirMenu(int aux) {			
 			int escolha;
 			Scanner ler = new Scanner(System.in);
@@ -72,34 +73,38 @@ public class Livraria_main {
 			return escolha;
 	}//metodo para exibir o Menu
 	
-	
-	static void ConsultarLivro(ArrayList livros) {
+	static void ConsultarLivro() {
 		Scanner ler = new Scanner (System.in);
 		String consulta;		
+		ArrayList<Livros> livros = new ArrayList();		
 		System.out.printf("Entre com o autor deseja consultar:");
 		consulta = ler.nextLine();		
-				
+		//consulta.toLowerCase();
+		//System.out.printf("Consulta: %s\n", consulta.toLowerCase());			
+		
 		for(int i = 0; i < livros.size() ; i++) {				
-			if(((Livros) livros.get(i)).getAutor().toLowerCase().equals(consulta.toLowerCase())) {
-				Livros livro1 = (Livros) livros.get(i);
+			if(livros.get(i).getAutor().toLowerCase().equals(consulta.toLowerCase())) {
+				Livros livro = livros.get(i);
 				
-				System.out.printf("Cod Livro: %d \n", livro1.getCod());
-				System.out.printf("Nome: %s \n",livro1.getNome());
-				System.out.printf("Autor: %s \n",livro1.getAutor());
-				System.out.printf("Genero: %s \n",livro1.getGenero());
+				System.out.printf("Cod Livro: %d \n", livro.getCod());
+				System.out.printf("Nome: %s \n",livro.getNome());
+				System.out.printf("Autor: %s \n",livro.getAutor());
+				System.out.printf("Genero: %s \n",livro.getGenero());
 			}
 		}
 	}
 	
-	static void ListarLivros(ArrayList livros) {
-		System.out.printf("--------LISTA--------\n");					
-		for( int j = 0 ; j < livros.size(); j++) {						
-			Livros temp = (Livros) livros.get(j);						
-			System.out.printf("Cod Livro: %d \n", temp.getCod());
-			System.out.printf("Nome: %s \n",temp.getNome());
-			System.out.printf("Autor: %s \n",temp.getAutor());
-			System.out.printf("Genero: %s \n",temp.getGenero());
+	static String DeletarLivro(int del) {
+		ArrayList<Livros> livros = new ArrayList();		
+		for(int i = 0; i < livros.size() ; i++) {
+		Livros livro = livros.get(i);
+		if(livro.getCod()== del) {
+			livros.remove(del);
+			return "Deletado";
+		}else {
+			return "Não Possui Livro com o codigo ";
 		}
-	}	
-	
+		}
+		return null;	
+	}
 }//class
