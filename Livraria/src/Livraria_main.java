@@ -7,7 +7,7 @@ public class Livraria_main {
 		Scanner ler = new Scanner (System.in);		
 		int aux=-1;		
 		String nome, autor, genero;
-		int cod=1;
+		int cod=1,resp=0;
 		double valor;
 				
 		ArrayList<Livros> livros = new ArrayList(); // Criando a lista de Objetos
@@ -35,7 +35,7 @@ public class Livraria_main {
 					ler = new Scanner (System.in);
 					break;
 				case 2: 					
-					ConsultarLivro(livros); // Passando ArrayList como parametro para o metodo Consultar
+					ConsultarAutor(livros); // Passando ArrayList como parametro para o metodo Consultar
 					break;
 				case 3:	// IMPRIMIR LISTA
 					ListarLivros(livros);
@@ -63,8 +63,8 @@ public class Livraria_main {
 			
 			return escolha;
 	}//metodo para exibir o Menu
-	
-	static void ConsultarLivro(ArrayList livros) {
+		
+	static void ConsultarAutor(ArrayList livros) {
 		Scanner ler = new Scanner (System.in);
 		String consulta;		
 		System.out.printf("Entre com o autor deseja consultar:");

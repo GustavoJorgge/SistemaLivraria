@@ -2,6 +2,7 @@ public class Livros {
 	private String nome;	
 	private String autor;
 	private String genero;
+	private double valor;
 	private int cod;
 	
 	
@@ -35,7 +36,15 @@ public class Livros {
 	
 	public String getGenero() {
 		return genero;
-	}	
+	}
+	
+	void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	public double getValor() {
+		return valor;
+	}
 	
 	// metoro para retornar a lista de livros
 }
