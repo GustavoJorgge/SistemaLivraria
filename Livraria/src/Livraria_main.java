@@ -4,11 +4,11 @@ import java.util.Scanner;
 public class Livraria_main {
 
 	public static void main(String[] args) {		
-		Scanner ler = new Scanner (System.in);
-		
-		int aux=-1, deletar;		
+		Scanner ler = new Scanner (System.in);		
+		int aux=-1;		
 		String nome, autor, genero;
-		int cod=0;
+		int cod=1;
+		double valor;
 				
 		ArrayList<Livros> livros = new ArrayList(); // Criando a lista de Objetos
 		
@@ -21,14 +21,18 @@ public class Livraria_main {
 					System.out.printf("Entre com o autor:");
 					autor = ler.nextLine();					
 					System.out.printf("Entre com o genero do livro:");
-					genero = ler.nextLine();					
+					genero = ler.nextLine();
+					System.out.printf("Entre com o valor do livro:");
+					valor = ler.nextDouble();
 					Livros u = new Livros();
 					u.setNome(nome);
 					u.setAutor(autor);
 					u.setGenero(genero);
 					u.setCod(cod);
+					u.setValor(valor);
 					livros.add(u);	
 					cod++;
+					ler = new Scanner (System.in);
 					break;
 				case 2: 					
 					ConsultarLivro(livros); // Passando ArrayList como parametro para o metodo Consultar
@@ -37,19 +41,7 @@ public class Livraria_main {
 					ListarLivros(livros);
 					break;
 				case 4:
-					System.out.printf("--------DELETAR--------\n");
-					System.out.printf("Digite o Cod do livro que deseja deletar:");
-					deletar = ler.nextInt();
-					
-					for(int j = 0; j < livros.size() ; j++) {
-						Livros livro1 = livros.get(j);
-						if(livro1.getCod()== deletar) {
-							livros.remove(deletar);	
-							System.out.printf("Livro Deletado!\n");
-						}else {
-							System.out.printf("Não Possui Livro com o codigo\n");
-						}
-						}				
+					DeletarLivro(livros);			
 					break;							
 				default:
 			}//switch
@@ -71,7 +63,6 @@ public class Livraria_main {
 			
 			return escolha;
 	}//metodo para exibir o Menu
-	
 	
 	static void ConsultarLivro(ArrayList livros) {
 		Scanner ler = new Scanner (System.in);
@@ -99,7 +90,27 @@ public class Livraria_main {
 			System.out.printf("Nome: %s \n",temp.getNome());
 			System.out.printf("Autor: %s \n",temp.getAutor());
 			System.out.printf("Genero: %s \n",temp.getGenero());
+			System.out.printf("Preco: %.2f \n",temp.getValor());			
 		}
 	}	
 	
+	static void DeletarLivro(ArrayList livros) {
+		int deletar;
+		Scanner ler = new Scanner (System.in);
+		
+		System.out.printf("--------DELETAR--------\n");
+		System.out.printf("Digite o Cod do livro que deseja deletar:");
+		deletar = ler.nextInt();
+		
+		for(int i = 0; i != livros.size() ; i++) {
+			Livros temp = (Livros)livros.get(i);
+			if(deletar == temp.getCod()) {
+				System.out.printf("O livro %s foi Deletado!\n",temp.getNome());
+				livros.remove(i);					
+			}else if(i==livros.size()){
+				System.out.printf("Não Possui Livro com o codigo citado!\n");
+			}else {				
+			}
+			}
+	}
 }//class
