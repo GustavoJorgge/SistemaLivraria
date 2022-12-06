@@ -1,22 +1,24 @@
 public class Livros {		
-	String nome;	
-	String autor;
-	String genero;	
+	private String nome;	
+	private String autor;
+	private String genero;
+	private double valor;
+	private int cod;
 	
-	Livros(){		
-	}//criando objeto
 	
-	Livros(String nome, String autor, String tema){
-		this.nome = nome;
-		this.autor = autor;
-		this.genero = genero;
-	}	
+	void setCod(int cod) {
+		this.cod = cod;
+	}
+	
+	public int getCod() {
+		return cod;
+	}
 
 	void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	String getNome() {
+	public String getNome() {
 		return nome;
 	}
 	
@@ -24,7 +26,7 @@ public class Livros {
 		this.autor = autor;
 	}
 	
-	String getAutor() {
+	public String getAutor() {
 		return autor;
 	}
 	
@@ -32,8 +34,17 @@ public class Livros {
 		this.genero = genero;
 	}
 	
-	String getGenero() {
+	public String getGenero() {
 		return genero;
-	}		
+	}
 	
+	void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	public double getValor() {
+		return valor;
+	}
+	
+	// metoro para retornar a lista de livros
 }
