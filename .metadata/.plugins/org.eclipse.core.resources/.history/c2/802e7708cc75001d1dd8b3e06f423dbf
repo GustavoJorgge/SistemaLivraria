@@ -131,7 +131,7 @@ public class Livraria_main {
 		System.out.printf("Digite o Cod do livro que deseja deletar:");
 		deletar = ler.nextInt();
 		
-		for(int i = 0; i <livros.size() ; i++) {
+		for(int i = 0; i != livros.size() ; i++) {
 			Livros temp = (Livros)livros.get(i);
 			if(deletar == temp.getCod()) {
 				System.out.printf("O livro %s foi Deletado!\n",temp.getNome());

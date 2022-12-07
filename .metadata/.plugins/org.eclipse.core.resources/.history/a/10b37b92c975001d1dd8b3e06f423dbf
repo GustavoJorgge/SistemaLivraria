@@ -12,8 +12,7 @@ public class Livraria_main {
 				
 		ArrayList<Livros> livros = new ArrayList(); // Criando a lista de Objetos
 		
-		for( int i = 0 ; aux != 6 ; i++ ) {
-			aux = -1;
+		for( int i = 0 ; aux != 5 ; i++ ) {
 			aux = exibirMenu(aux);
 			switch(aux) {			
 				case 1: //CADASTRO				
@@ -38,15 +37,12 @@ public class Livraria_main {
 				case 2: 					
 					ConsultarAutor(livros); // Passando ArrayList como parametro para o metodo Consultar
 					break;
-				case 3:
-					ConsultarTitulo(livros);
-					break;
-				case 4:	// IMPRIMIR LISTA
+				case 3:	// IMPRIMIR LISTA
 					ListarLivros(livros);
 					break;
-				case 5:
+				case 4:
 					DeletarLivro(livros);			
-					break;		
+					break;							
 				default:
 			}//switch
 		}//for
@@ -57,11 +53,10 @@ public class Livraria_main {
 			
 			System.out.printf("-------MENU-------\n");
 			System.out.printf("1 - CADASTRAR\n");
-			System.out.printf("2 - CONSULTAR POR AUTOR\n");
-			System.out.printf("3 - CONSULTAR POR TITULO\n");			
-			System.out.printf("4 - LISTAR\n");		
-			System.out.printf("5 - DELETAR\n");
-			System.out.printf("6 - SAIR\n");
+			System.out.printf("2 - CONSULTAR\n");
+			System.out.printf("3 - LISTAR\n");		
+			System.out.printf("4 - DELETAR\n");
+			System.out.printf("5 - SAIR\n");
 			System.out.printf("DIGITE SUA ESCOLHA:");
 			
 			escolha = ler.nextInt();
@@ -70,43 +65,19 @@ public class Livraria_main {
 	}//metodo para exibir o Menu
 		
 	static void ConsultarAutor(ArrayList livros) {
-		System.out.printf("--------CONSULTA--------\n");	
 		Scanner ler = new Scanner (System.in);
 		String consulta;		
 		System.out.printf("Entre com o autor deseja consultar:");
 		consulta = ler.nextLine();		
 				
-		for(int i = 0; i < livros.size() ; i++) {
-			//Verificando se o autor digitado esta na lista
-			//Utilizei a funcao toLowerCase para ignorar letras maiusculas e pesquisar com mais assertividade
+		for(int i = 0; i < livros.size() ; i++) {				
 			if(((Livros) livros.get(i)).getAutor().toLowerCase().equals(consulta.toLowerCase())) {
-				Livros temp = (Livros) livros.get(i);				
-				System.out.printf("Cod Livro: %d \n", temp.getCod());
-				System.out.printf("Nome: %s \n",temp.getNome());
-				System.out.printf("Autor: %s \n",temp.getAutor());
-				System.out.printf("Genero: %s \n",temp.getGenero());
-				System.out.printf("Preco: %.2f\n",temp.getValor());
-			}
-		}
-	}
-	
-	static void ConsultarTitulo(ArrayList livros) {
-		System.out.printf("--------CONSULTA--------\n");	
-		Scanner ler = new Scanner (System.in);
-		String consulta;		
-		System.out.printf("Entre com o Nome do livro deseja consultar:");
-		consulta = ler.nextLine();		
+				Livros livro1 = (Livros) livros.get(i);
 				
-		for(int i = 0; i < livros.size() ; i++) {
-			//Verificando se o autor digitado esta na lista
-			//Utilizei a funcao toLowerCase para ignorar letras maiusculas e pesquisar com mais assertividade
-			if(((Livros) livros.get(i)).getNome().toLowerCase().equals(consulta.toLowerCase())) {
-				Livros temp = (Livros) livros.get(i);				
-				System.out.printf("Cod Livro: %d \n", temp.getCod());
-				System.out.printf("Nome: %s \n",temp.getNome());
-				System.out.printf("Autor: %s \n",temp.getAutor());
-				System.out.printf("Genero: %s \n",temp.getGenero());
-				System.out.printf("Preco: %.2f\n",temp.getValor());
+				System.out.printf("Cod Livro: %d \n", livro1.getCod());
+				System.out.printf("Nome: %s \n",livro1.getNome());
+				System.out.printf("Autor: %s \n",livro1.getAutor());
+				System.out.printf("Genero: %s \n",livro1.getGenero());
 			}
 		}
 	}
@@ -131,7 +102,7 @@ public class Livraria_main {
 		System.out.printf("Digite o Cod do livro que deseja deletar:");
 		deletar = ler.nextInt();
 		
-		for(int i = 0; i <livros.size() ; i++) {
+		for(int i = 0; i != livros.size() ; i++) {
 			Livros temp = (Livros)livros.get(i);
 			if(deletar == temp.getCod()) {
 				System.out.printf("O livro %s foi Deletado!\n",temp.getNome());

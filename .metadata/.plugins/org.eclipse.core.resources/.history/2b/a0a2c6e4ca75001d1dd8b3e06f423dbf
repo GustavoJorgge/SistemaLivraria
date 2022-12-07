@@ -12,7 +12,7 @@ public class Livraria_main {
 				
 		ArrayList<Livros> livros = new ArrayList(); // Criando a lista de Objetos
 		
-		for( int i = 0 ; aux != 6 ; i++ ) {
+		for( int i = 0 ; aux != 5 ; i++ ) {
 			aux = -1;
 			aux = exibirMenu(aux);
 			switch(aux) {			
@@ -46,8 +46,8 @@ public class Livraria_main {
 					break;
 				case 5:
 					DeletarLivro(livros);			
-					break;		
-				default:
+					break;
+				default:			
 			}//switch
 		}//for
 	}//main	
@@ -131,7 +131,7 @@ public class Livraria_main {
 		System.out.printf("Digite o Cod do livro que deseja deletar:");
 		deletar = ler.nextInt();
 		
-		for(int i = 0; i <livros.size() ; i++) {
+		for(int i = 0; i != livros.size() ; i++) {
 			Livros temp = (Livros)livros.get(i);
 			if(deletar == temp.getCod()) {
 				System.out.printf("O livro %s foi Deletado!\n",temp.getNome());
