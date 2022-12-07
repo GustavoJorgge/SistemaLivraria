@@ -62,7 +62,8 @@ public class Livraria_main {
 			System.out.printf("4 - LISTAR\n");		
 			System.out.printf("5 - DELETAR\n");
 			System.out.printf("6 - SAIR\n");
-			System.out.printf("DIGITE SUA ESCOLHA:");			
+			System.out.printf("DIGITE SUA ESCOLHA:");
+			
 			escolha = ler.nextInt();
 			
 			return escolha;
