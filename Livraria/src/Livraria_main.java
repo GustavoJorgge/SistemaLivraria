@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 public class Livraria_main {
-
+	
 	public static void main(String[] args) {		
 		Scanner ler = new Scanner (System.in);		
 		int aux=-1;		
@@ -11,8 +12,9 @@ public class Livraria_main {
 		double valor;
 				
 		ArrayList<Livros> livros = new ArrayList(); // Criando a lista de Objetos
+		ArrayList<Cliente> clientes = new ArrayList();
 		
-		for( int i = 0 ; aux != 6 ; i++ ) {
+		do {
 			aux = -1;
 			aux = exibirMenu(aux);
 			switch(aux) {			
@@ -35,33 +37,43 @@ public class Livraria_main {
 					cod++;
 					ler = new Scanner (System.in);
 					break;
-				case 2: 					
+				case 2:
+					CadastrarCliente(clientes);
+					break;
+				case 3: 					
 					ConsultarAutor(livros); // Passando ArrayList como parametro para o metodo Consultar
 					break;
-				case 3:
+				case 4:
 					ConsultarTitulo(livros);
 					break;
-				case 4:	// IMPRIMIR LISTA
+				case 5:	// IMPRIMIR LISTA
 					ListarLivros(livros);
 					break;
-				case 5:
+				case 6:
+					ListarClientes(clientes);
+					break;
+				case 7:
 					DeletarLivro(livros);			
-					break;		
+					break;
+				case 8:
+					System.out.printf("Até mais!!");
 				default:
-			}//switch
-		}//for
+			}//switch 
+		}while(aux!=8);//for
 	}//main	
 	static int exibirMenu(int aux) {			
 			int escolha;
 			Scanner ler = new Scanner(System.in);
 			
 			System.out.printf("-------MENU-------\n");
-			System.out.printf("1 - CADASTRAR\n");
-			System.out.printf("2 - CONSULTAR POR AUTOR\n");
-			System.out.printf("3 - CONSULTAR POR TITULO\n");			
-			System.out.printf("4 - LISTAR\n");		
-			System.out.printf("5 - DELETAR\n");
-			System.out.printf("6 - SAIR\n");
+			System.out.printf("1 - CADASTRAR LIVRO\n");
+			System.out.printf("2 - CADASTRAR CLIENTE\n");
+			System.out.printf("3 - CONSULTAR POR AUTOR\n");
+			System.out.printf("4 - CONSULTAR POR TITULO\n");			
+			System.out.printf("5 - LISTAR TODOS OS LIVROS\n");	
+			System.out.printf("6 - LISTAR TODOS OS CLIENTES\n");			
+			System.out.printf("7 - DELETAR LIVRO\n");
+			System.out.printf("8 - SAIR\n");
 			System.out.printf("DIGITE SUA ESCOLHA:");			
 			escolha = ler.nextInt();
 			
@@ -140,5 +152,34 @@ public class Livraria_main {
 			}else {				
 			}
 			}
+	}
+	
+	static void CadastrarCliente(ArrayList clientes) {
+		Scanner ler = new Scanner(System.in);
+		String nome;		
+		int anoNasc, cod;
+		
+		ler = new Scanner(System.in);//limpando buffer
+		System.out.printf("Entre com o nome do cliente:");
+		nome = ler.nextLine();
+		ler = new Scanner(System.in);//limpando buffer
+		System.out.printf("Entre com ano de Nascimento:");
+		anoNasc = ler.nextInt();
+		Cliente u = new Cliente(nome, anoNasc, anoNasc);
+		u.setNome(nome);
+		u.setAnoNasc(anoNasc);
+		u.setCod(+1);
+		clientes.add(u);
+		
+	}
+
+	static void ListarClientes(ArrayList clientes) {
+		System.out.printf("--------LISTA CLIENTE--------\n");					
+		for( int j = 0 ; j < clientes.size(); j++) {						
+			Cliente temp = (Cliente) clientes.get(j);						
+			System.out.printf("COD: %s \n",temp.getCod());			
+			System.out.printf("Nome: %s \n",temp.getNome());
+			System.out.printf("Ano de nascimento: %d \n",temp.getAnoNasc());			
+		}
 	}
 }//class
