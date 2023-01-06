@@ -43,7 +43,7 @@ public class Livros {
 	}
 	
 	public double getValor() {
-		return valor;
+		return valor; 
 	}
 	
 	// metoro para retornar a lista de livros
